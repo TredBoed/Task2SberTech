@@ -162,7 +162,7 @@ public class Main {
         String line;
 
 
-        List<String> wordset = new LinkedList<>();
+        ArrayList<String> wordset = new ArrayList<>();
 
         while(in.hasNextLine()){
             line = in.nextLine();

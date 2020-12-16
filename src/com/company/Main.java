@@ -196,7 +196,7 @@ public class Main {
         }
         in.close();
 
-        System.out.println("Write down num or strings with spaces (if it more that one)");
+        System.out.println("Write down num or strings with spaces (if it more than one)");
         String userInput = in2.nextLine();
         String numsOfStrings[] = userInput.split(" ");
 

@@ -60,7 +60,7 @@ public class Main {
     public static void numOfWordsInFile(String filepath) throws FileNotFoundException {
         Scanner in = new Scanner(new File(filepath));
         String line;
-        List<String> wordset = new LinkedList<String>();
+        HashMap<String, Integer> wordset = new HashMap<String,Integer>();
 
         while(in.hasNextLine()){
             line = in.nextLine();
@@ -68,12 +68,12 @@ public class Main {
 
             for (String s: words)
             {
-                wordset.add(s);
+                wordset.put(s,1);
             }
         }
         in.close();
 
-        System.out.println("There are: "+wordset.size()+" in file");
+        System.out.println("There are: "+wordset.size()+" different words in file");
         System.out.println();
     }
 
@@ -100,7 +100,6 @@ public class Main {
     //        }
     //    };
     //    Collections.sort(wordset, byLength);
-
 
         //Java 8
         wordset.sort((first, second) -> Integer.compare(first.length(), second.length()));
@@ -142,27 +141,25 @@ public class Main {
     public static void reversedStrings(String filepath) throws FileNotFoundException {
         Scanner in = new Scanner(new File(filepath));
         String line;
-        ArrayList<String> wordset = new ArrayList<String>();
+        Stack<String> wordset = new Stack<String>();
 
         while(in.hasNextLine()){
                line = in.nextLine();
-                wordset.add(line);
+                wordset.push(line);
         }
         in.close();
 
-        for(int i=wordset.size()-1; i >= 0; i--)
-        {
-            System.out.println(wordset.get(i));
+        while(!wordset.isEmpty()){
+            System.out.println(wordset.pop());
         }
         System.out.println();
     }
 
-    public static <ListIteraror> void reversedListIterator(String filepath) throws FileNotFoundException {
+    public static void reversedListIterator(String filepath) throws FileNotFoundException {
         Scanner in = new Scanner(new File(filepath));
         String line;
 
-
-        ArrayList<String> wordset = new ArrayList<>();
+        LinkedList<String> wordset = new LinkedList<String>();
 
         while(in.hasNextLine()){
             line = in.nextLine();

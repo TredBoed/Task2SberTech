@@ -1,39 +1,41 @@
 package com.company;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedList;
 
 
-    public  class ListIterator<Type> implements Iterable<Type> {
 
-        private ArrayList<Type> arrlist;
-        private int currentSize;
+    public  class ListIterator<Type> implements Iterable<Type>
+    {
+        private LinkedList<Type> list;
 
-        public ListIterator(ArrayList<Type> newList) {
-            this.arrlist = newList;
-            this.currentSize = arrlist.size();
+        public ListIterator(LinkedList<Type> newList)
+        {
+            this.list = newList;
         }
 
         @Override
-        public Iterator<Type> iterator() {
-            Iterator<Type> it = new Iterator<Type>() {
-
-                private int currentIndex = arrlist.size()-1;
+        public Iterator<Type> iterator()
+        {
+            Iterator<Type> it = new Iterator<Type>()
+            {
 
                 @Override
-                public boolean hasNext() {
-                    return currentIndex >= 0 &&  arrlist.get(currentIndex) != null;
+                public boolean hasNext()
+                {
+                    return !list.isEmpty();
                 }
 
                 @Override
-                public Type next() {
-                    return arrlist.get(currentIndex--);
+                public Type next()
+                {
+                    return list.pop();
                 }
 
                 @Override
-                public void remove() {
-                    arrlist.remove(currentIndex);
+                public void remove()
+                {
+                    throw new UnsupportedOperationException();
                 }
             };
             return it;
